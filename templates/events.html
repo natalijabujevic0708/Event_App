@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Event Details</title>
+  <link rel='stylesheet' href="{{ url_for('static', filename='css/styles.css') }}" type='text/css' />
+</head>
+<body>
+  <h1>{{ event_type | title }}s</h1>
+  <li><a href="{{url_for('form')}}" class='back_button'> Go back </a></li>
+  <section id="eventSection">
+    {% for event in events %}
+    <article class="event">
+      <h2>{{ event.eventName.S }}</h2>
+      <p><strong>Event ID:</strong> {{ event.eventID.S }}</p>
+      <p><strong>Event Type:</strong> {{ event.eventType.S }}</p>
+      <p><strong>Start Date Time:</strong> {{ event.startDateTime.S }}</p>
+      <p><strong>End Date Time:</strong> {{ event.endDateTime.S }}</p>
+      <p><strong>Event Organizer:</strong> {{ event.eventOrganizer.S }}</p>
+      <p><strong>Event Description:</strong> {{ event.eventDescription.S }}</p>
+    </article>
+    {% endfor %}
+  </section>
+</body>
+</html>

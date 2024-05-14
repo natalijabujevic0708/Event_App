@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Event Form</title>
+  <link rel='stylesheet' href="{{ url_for('static', filename='css/styles.css') }}" type='text/css' />
+</head>
+<body>
+  <div class="container">
+    <div class="form-container">
+      <form id="eventForm" action="{{ url_for('add_event')}}" method="POST" >
+        <h2>Create Event</h2>
+        <div class="form-group">
+          <label for="eventName">Event Name <span class="required">*</span></label>
+          <input type="text" id="eventName" name="eventName" required>
+        </div>
+
+        <div class="form-group">
+          <label for="eventType">Event Type <span class="required">*</span></label>
+          <select id="eventType" name="eventType" required>
+            <option value="Webinar">Webinar</option>
+            <option value="Conference">Conference</option>
+            <option value="Workshop">Workshop</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="startDateTime">Start Date Time <span class="required">*</span></label>
+          <input type="datetime-local" id="startDateTime" name="startDateTime" required>
+        </div>
+
+        <div class="form-group">
+          <label for="endDateTime">End Date Time <span class="required">*</span></label>
+          <input type="datetime-local" id="endDateTime" name="endDateTime" required>
+        </div>
+
+        <div class="form-group">
+          <label for="eventOrganizer">Event Organizer <span class="required">*</span></label>
+          <input type="text" id="eventOrganizer" name="eventOrganizer" required>
+        </div>
+
+        <div class="form-group">
+          <label for="eventDescription">Event Description <span class="required">*</span></label>
+          <textarea id="eventDescription" name="eventDescription" rows="4" required></textarea>
+        </div>
+
+        <button type="submit">Create Event</button>
+      </form>
+    </div>
+    <div class="event-list-container">
+      <h3>Search for Events:</h3>
+      <ul class="event-list">
+        <li><a href="{{url_for('list_events', event_type='Webinar')}}" class="event-link">Search for Webinar Events</a></li>
+        <li><a href="{{url_for('list_events', event_type='Conference')}}" class="event-link">Search for Conference Events</a></li>
+        <li><a href="{{url_for('list_events', event_type='Workshop')}}" class="event-link">Search for Workshop Events</a></li>
+      </ul>
+    </div>    
+  </div>
+</body>
+</html>
