@@ -46,7 +46,7 @@ def is_token_valid(tokens):
         current_time_seconds = current_time.timestamp()
 
         # Check if the current time is before expiration time
-        return current_time < expiration_time
+        return current_time_seconds < expiration_time
     except Exception as e:
         raise ValueError(f"Error checking token validity: {str(e)}")
 
